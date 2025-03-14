@@ -1,8 +1,16 @@
-// components/Sidebar.jsx
 import { Link } from "react-router-dom";
-import { logout } from "../utils/auth";
+import { useAuth } from "../context/AuthContext"; // Use AuthContext for logout
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  const { logout } = useAuth(); // Get logout function from context
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout(); // Remove token and update state
+    navigate("/login"); // Redirect without full page reload
+  };
+
   return (
     <div className="bg-gray-800 text-white w-64 flex flex-col">
       <div className="p-4 text-xl font-bold">Accounting SaaS</div>
@@ -15,7 +23,7 @@ const Sidebar = () => {
       
       <div className="p-4">
         <button 
-          onClick={logout}
+          onClick={handleLogout}
           className="w-full bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700"
         >
           Logout
