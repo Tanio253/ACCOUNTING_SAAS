@@ -3,6 +3,7 @@ import axios from "axios";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { getToken } from "../utils/auth";
+import API_URL from "../utils/api";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -28,8 +29,8 @@ const CashFlowChart = () => {
         const authHeader = { headers: { 'Authorization': `Bearer ${token}` } };
         
         const [invoiceRes, expenseRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/invoices", authHeader),
-          axios.get("http://localhost:5000/api/expenses", authHeader),
+          axios.get(`${API_URL}/api/invoices`, authHeader),
+          axios.get(`${API_URL}/api/expenses`, authHeader),
         ]);
 
         // Group data by month

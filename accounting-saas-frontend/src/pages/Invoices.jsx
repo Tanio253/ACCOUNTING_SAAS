@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import API_URL from "../utils/api";
 
 const Invoices = () => {
   const [invoices, setInvoices] = useState([]);
@@ -18,7 +19,7 @@ const Invoices = () => {
           return;
         }
 
-        const response = await axios.get("http://localhost:5000/api/invoices", {
+        const response = await axios.get(`${API_URL}/api/invoices`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

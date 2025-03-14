@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx"; // Assuming you implemented the AuthContext
+import API_URL from "../utils/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +17,9 @@ const Login = () => {
     setError("");
     
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
+
+      // Then in your handleSubmit function
+      const response = await axios.post(`${API_URL}/api/auth/login`, {
         email,
         password
       });

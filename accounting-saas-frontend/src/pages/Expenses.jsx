@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { getToken } from "../utils/auth";
+import API_URL from "../utils/api";
 
 const Expenses = () => {
   const [expenses, setExpenses] = useState([]);
@@ -13,7 +14,7 @@ const Expenses = () => {
       try {
         const token = getToken();
         
-        const response = await axios.get("http://localhost:5000/api/expenses", {
+        const response = await axios.get(`${API_URL}/api/expenses`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
