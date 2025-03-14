@@ -1,7 +1,7 @@
 // Updated expense router (routes/expenseRoutes.js)
 const express = require("express");
 const Expense = require("../models/Expense");
-const authMiddleware = require("../middleware/authMiddleWare");
+const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
