@@ -22,7 +22,11 @@ const Login = () => {
       const response = await axios.post(`${API_URL}/api/auth/login`, {
         email,
         password
-      });
+      },
+      {
+        headers: { "Content-Type": "application/json" }
+      }
+    );
       
       // Use the login function from context if available
       if (login) {
